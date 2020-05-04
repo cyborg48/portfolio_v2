@@ -1,9 +1,34 @@
+:root {
+  --font-color: #000;
+  --bg-color: #fff;
+  --accent-color:darkturquoise;
+  --shadow-strength:0.5;
+  --icon-brightness:0%;
+  --gh:url("github_logo.png");
+  --bl:url("blogger_logo.png");
+  --ig:url("ig_logo.png");
+  --toggle:url("toggle_theme_black.png");
+}
+
+[data-theme="dark"] {
+  --font-color: #fff;
+  --bg-color: #161625;
+  --accent-color:rgb(0, 147, 150);
+  --icon-brightness:100%;
+  --shadow-strength:0.8;
+  --gh:url("github_white.png");
+  --bl:url("blogger_white.png");
+  --ig:url("ig_white.png");
+  --toggle:url("toggle_theme_white.png");
+}
+
+
 html {
     scroll-behavior: smooth;
   }
   
   h1 {
-    color: black;
+    color: var(--font-color);
     text-align: center;
     font-family: 'Playfair Display SC', serif;
     font-size: 2vw;
@@ -13,14 +38,16 @@ html {
   
   #gallery{
       min-height:50vw;
+      padding-left:10vw;
+      padding-right:10vw;
   }
   
   h1:hover{
-    color:darkturquoise;
+    color:var(--accent-color);
   }
   
   h4 {
-    color: black;
+    color: var(--font-color);
     text-align: center;
     font-family: 'EB Garamond', serif;
     font-size: 1.2vw;
@@ -36,17 +63,17 @@ html {
   }
 
   a {
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
   }
 
   a:visited {
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
   }
   
   h2 {
-    color: black;
+    color: var(--font-color);
     display: inline;
     text-align: center;
     margin-left:2vw;
@@ -55,11 +82,11 @@ html {
   }
   
   h2:hover{
-    color:darkturquoise;
+    color:var(--accent-color);
   }
   
   h3 {
-    color: black;
+    color: var(--font-color);
     text-align: right;
     font-family: 'Playfair Display SC', serif;
     font-size: 2vw;
@@ -69,8 +96,7 @@ html {
   }
   
   body{
-    padding-left:10%;
-    padding-right:10%;
+    background-color: var(--bg-color);
   }
   
   .box {
@@ -95,7 +121,7 @@ html {
   .textBox:after{
     content: ' ';
     display: block;
-    background-color: white;
+    background-color: var(--bg-color);
     height: 2vw;
     width: 100%;
     position: absolute;
@@ -125,22 +151,21 @@ html {
   
   
   p {
-    color: black;
+    color: var(--font-color);
     text-align: justify;
     font-family: 'EB Garamond', serif;
     font-size:calc(5px + 0.5vw);
-    padding-top:2vw;
     padding-right:2vw;
     padding-left:2vw;
     width:80%;
-    margin-bottom:7em;
+    margin-bottom:1em;
     line-height:1.5em;
   }
   
   
   .fullText{
     display:block;
-    color: black;
+    color: var(--font-color);
     text-align: justify;
     font-family: 'EB Garamond', serif;
     font-size:calc(8px + 0.5vw);
@@ -192,7 +217,7 @@ html {
   }
   
   .shadow{
-      background-color:black;
+      background-color:#000;
       width:100%;
       height:100%;
       opacity:0;
@@ -211,7 +236,7 @@ html {
       opacity:0;
     }
     100%{
-      opacity:0.5;
+      opacity:var(--shadow-strength);
     }
   }
   
@@ -223,8 +248,21 @@ html {
       align:center;
       margin-left:3vw;
       margin-right:3vw;
+      filter:brightness(var(--icon-brightness));
+  }
+
+  #gh.link{
+    content:var(--gh);
+  }
+
+  #ig.link{
+    content:var(--ig);
   }
   
+  #bl.link{
+    content:var(--bl);
+  }
+
   #gh.link:hover{
       content:url("github_green.png");
   }
@@ -240,4 +278,37 @@ html {
   #socials{
       margin-top: 8vw;
   }
-  
+
+  #toggle{
+      float:right;
+      position: absolute;
+      content:--toggle;
+      height:2vw;
+      width:2vw;
+      transform: rotate(0deg);
+      animation-name: out;
+      margin:3vw;
+  }
+
+  #toggle:hover{
+    animation: in 0.5s forwards;
+  }
+
+
+@keyframes in {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes out {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

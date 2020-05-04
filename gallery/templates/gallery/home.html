@@ -14,7 +14,11 @@
         
             <a href="{% url 'gallery-view' post.date_posted.year post.date_posted.month post.date_posted.day post.title %}"><div class="textBox">
                 <div class="shadow"></div>
-                <p class="preview">{{ post.content }}</p>
+                <p class="preview">
+                    {% autoescape off %}
+                        {{ post.content }}
+                    {% endautoescape %}
+                </p>
             </div></a>
 
         {% endif %}

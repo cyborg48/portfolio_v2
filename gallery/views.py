@@ -12,6 +12,14 @@ def home(request):
             imgBased.append(p)
         elif p.base == 'text':
             textBased.append(p)
+        if(not p.content):
+            p.content = ''
+        paragraphs = p.content.split("\n")
+        p.content = "<br>".join(paragraphs)
+        paragraphs = p.content.split("\\\"")
+        p.content = "\"".join(paragraphs)
+        paragraphs = p.content.split("\\t")
+        p.content = "".join(paragraphs)
     allPosts = []
     t = 0
     i = 0
@@ -34,6 +42,14 @@ def art(request):
     for p in allPosts:
         if p.category == 'art':
             art.append(p)
+        if(not p.content):
+            p.content = ''
+        paragraphs = p.content.split("\n")
+        p.content = "<br>".join(paragraphs)
+        paragraphs = p.content.split("\\\"")
+        p.content = "\"".join(paragraphs)
+        paragraphs = p.content.split("\\t")
+        p.content = "".join(paragraphs)
     context = {
         'posts': art,
         'jump':'gallery'
@@ -46,6 +62,14 @@ def writing(request):
     for p in allPosts:
         if p.category == 'writing':
             writing.append(p)
+        if(not p.content):
+            p.content = ''
+        paragraphs = p.content.split("\n")
+        p.content = "<br>".join(paragraphs)
+        paragraphs = p.content.split("\\\"")
+        p.content = "\"".join(paragraphs)
+        paragraphs = p.content.split("\\t")
+        p.content = "".join(paragraphs)
     context = {
         'posts': writing,
         'jump':'gallery'
@@ -58,6 +82,14 @@ def code(request):
     for p in allPosts:
         if p.category == 'code':
             code.append(p)
+        if(not p.content):
+            p.content = ''
+        paragraphs = p.content.split("\n")
+        p.content = "<br>".join(paragraphs)
+        paragraphs = p.content.split("\\\"")
+        p.content = "\"".join(paragraphs)
+        paragraphs = p.content.split("\\t")
+        p.content = "".join(paragraphs)
     context = {
         'posts': code,
         'jump':'gallery'
@@ -71,6 +103,16 @@ def view(request, year, month, day, title):
     for p in allPosts:
         if p.date_posted.year == year and p.date_posted.month == month and p.date_posted.day == day and p.title == title:
             post = p
+            if(not post.content):
+                post.content = ''
+            paragraphs = p.content.split("<br>")
+            post.content = "<br><br>".join(paragraphs)
+            paragraphs = p.content.split("\n")
+            post.content = "<br><br>".join(paragraphs)
+            paragraphs = p.content.split("\\\"")
+            post.content = "\"".join(paragraphs)
+            paragraphs = p.content.split("\\t")
+            post.content = "".join(paragraphs)
     context = {
         'posts': post,
         'jump':'gallery'

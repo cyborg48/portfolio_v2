@@ -4,12 +4,15 @@
     
     <h3>{{ posts.title }}</h3>
 
-    {% if posts.base == 'image' %}
+    {% if posts.image %}
         <img class="fullPic" src={{posts.image.url}}>
-
-    {% elif posts.base == 'text' %}
-        <p class="fullText">{{ posts.content }}</p>
     {% endif %}
+
+    <p class="fullText">
+        {% autoescape off %}
+            {{ posts.content }}
+        {% endautoescape %}
+    </p>
 
 
 {% endblock content %}
