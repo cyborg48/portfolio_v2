@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+
+    {% if title %}
+        <title>Portfolio - {{title}}</title>
+    {% else %}
+        <title>Portfolio</title>
+    {% endif %}
+    
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link href="{%static 'gallery/main.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body id = "body" onload="load()">
+    
+    <section>
+    <a name = "header" id = "header">
+
+    <a href="{% url 'gallery-home' %}"><h1>Portfolio</h1></a>
+    <h4>Caroline Dinh</h4>
+    <h4>Art marries tech. I'll officiate the wedding.</h4>
+
+    <a name = "gallery" id = "gallery"></a>
+
+    <center>
+    <a href="{% url 'gallery-art' %}"><h2 onClick="show('art')">ART</h2></a>
+    <a href="{% url 'gallery-writing' %}"><h2 onClick = "show('writing')">WRITING</h2></a>
+    <a href="{% url 'gallery-code' %}"><h2 onClick="show('code')">CODE</h2></a>
+    </center>
+
+    </section>
+
+
+
+    <section id = "gallery">
+      {% block content %}{% endblock %}
+    </section>
+
+    <section>
+    <center>
+    <div id = "socials">
+	    <a href = "https://www.instagram.com/guillotinedqueen" target="_blank"><img id = "ig" src = "{%static 'gallery/ig_logo.png' %}" class = "link"></img></a>
+	    <a href = "http://www.stemininity.blogspot.com" target="_blank"><img id = "bl" src = "{%static 'gallery/blogger_logo.png' %}" class = "link"></img></a>
+	    <a href = "https://www.github.com/cyborg48" target="_blank"><img id = "gh" src = "{%static 'gallery/github_logo.png' %}" class = "link"></img></a>
+
+    </div>
+    </center>
+    </section>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyBerFw62BPuigrsYiECb5nfSdK7ptFQiS0",
+	    authDomain: "storage-336db.firebaseapp.com",
+	    databaseURL: "https://storage-336db.firebaseio.com",
+	    projectId: "storage-336db",
+	    storageBucket: "storage-336db.appspot.com",
+	    messagingSenderId: "858429690727",
+	    appId: "1:858429690727:web:39830591530ee76f8615c2",
+	    measurementId: "G-BRL0D52H2N"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+  {% if jump == 'gallery' %}
+    <script src="{%static 'gallery/jumpToGallery.js' %}"></script>
+  {% else %}
+    <script src="{%static 'gallery/script.js' %}"></script>
+  {% endif %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "gallery/base.html" %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+        {% if post.base == 'image' %}
+
+            <div class="box">
+                <a href="{% url 'gallery-view' post.date_posted.year post.date_posted.month post.date_posted.day post.title %}"><img class="icon" src={{post.image.url}}></a>
+            </div>
+
+        {% elif post.base == 'text' %}
+        
+            <a href="{% url 'gallery-view' post.date_posted.year post.date_posted.month post.date_posted.day post.title %}"><div class="textBox">
+                <div class="shadow"></div>
+                <p class="preview">{{ post.content }}</p>
+            </div></a>
+
+        {% endif %}
+
+
+    {% endfor %}
+
+    
+{% endblock content %}

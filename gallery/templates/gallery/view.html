@@ -1,0 +1,15 @@
+{% extends "gallery/base.html" %}
+
+{% block content %}
+    
+    <h3>{{ posts.title }}</h3>
+
+    {% if posts.base == 'image' %}
+        <img class="fullPic" src={{posts.image.url}}>
+
+    {% elif posts.base == 'text' %}
+        <p class="fullText">{{ posts.content }}</p>
+    {% endif %}
+
+
+{% endblock content %}
