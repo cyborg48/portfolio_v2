@@ -44,10 +44,13 @@ function switchTheme(){
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark'); //add this
         console.log("checked")
+        document.getElementById("toggle").src = "/static/gallery/toggle_theme_white.png";
     }
     else {
         currentTheme = 'light';
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light'); //add this
-    }    
+        document.getElementById("toggle").src = "/static/gallery/toggle_theme_black.png";
+    }  
+    console.log(currentTheme);
 }

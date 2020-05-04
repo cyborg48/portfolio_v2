@@ -32,9 +32,11 @@
     <a name = "gallery" id = "gallery"></a>
 
     <center>
-    <a href="{% url 'gallery-art' %}"><h2 onClick="show('art')">ART</h2></a>
-    <a href="{% url 'gallery-writing' %}"><h2 onClick = "show('writing')">WRITING</h2></a>
-    <a href="{% url 'gallery-code' %}"><h2 onClick="show('code')">CODE</h2></a>
+      {% for category in categories %}
+      {% with link='gallery-'|add:category %}
+      <a href="{% url link %}"><h2 onClick="show('{{category}}')">{{category|upper}}</h2></a>
+      {% endwith %}
+      {% endfor %}
     </center>
 
     </section>
