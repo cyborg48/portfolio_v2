@@ -19,14 +19,14 @@
   
   <body id = "body" onload="load()">
 
-    <img src="{%static 'gallery/toggle_theme_black.png' %}" id="toggle" onclick="switchTheme()"></img><br>
+    <div id="togglebox"><img src="{%static 'gallery/toggle_theme_black.png' %}" id="toggle" onclick="switchTheme()"></img><br></div>
 
     
     <section>
     <a name = "header" id = "header">
 
     <a href="{% url 'gallery-home' %}"><h1>Portfolio</h1></a>
-    <h4>Caroline Dinh</h4>
+    <h4>of Caroline Dinh</h4>
     <h4>Art marries tech. I'll officiate the wedding.</h4>
 
     <a name = "gallery" id = "gallery"></a>
@@ -64,5 +64,6 @@
     <script src="{% static 'gallery/script.js' %}"></script>
   {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
   </body>
 </html>

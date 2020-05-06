@@ -79,9 +79,7 @@ def separateContent(allPosts):
         if(not post.content):
             post.content = ''
         paragraphs = post.content.split("<br>")
-        post.content = "<br><br>".join(paragraphs)
-        paragraphs = post.content.split("\n")
-        post.content = "<br><br>".join(paragraphs)
+        post.content = "<br>".join(paragraphs)
         paragraphs = post.content.split("\\\"")
         post.content = "\"".join(paragraphs)
         paragraphs = post.content.split("\\t")
@@ -102,4 +100,3 @@ def getCategories(allPosts):
         if not p.category in categories:
             categories.append(p.category)
     return categories
-
